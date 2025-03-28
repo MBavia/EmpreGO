@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Painel da Empresa{% endblock %}
+
+{% block content %}
+    <h1>Lista de Candidatos</h1>
+
+    {% if candidatos %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Currículo</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidato in candidatos %}
+                    <tr>
+                        <td>{{ candidato.nome_candidato }}</td>
+                        <td>{{ candidato.email }}</td>
+                        <td>{{ candidato.telefone }}</td>
+                        <td>
+                            <a href="/download/{{ candidato.id_candidato }}" class="btn btn-info btn-sm">Baixar currículo</a>
+                        </td>
+                        <td>
+                            <a href="/delete/{{ candidato.id_candidato }}" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há candidatos para essa vaga!</p>
+    {% endif %}
+{% endblock %}

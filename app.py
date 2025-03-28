@@ -624,4 +624,4 @@ def not_found(error):
     return render_template('404.html'), 404
 #FINAL DO CÓDIGO
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run()
